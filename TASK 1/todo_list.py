@@ -7,21 +7,21 @@ class CoolTodoApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Cool To-Do List App")
-        self.root.geometry("400x300")
+        self.root.geometry("650x320")
 
         self.style = ttk.Style()
-        self.style.theme_use("clam")  # You can try other themes like "winnative", "alt", etc.
+        self.style.theme_use("clam")
 
         self.todo_list = self.load_todo_list()
 
         self.task_var = tk.StringVar()
-        self.task_entry = ttk.Entry(root, textvariable=self.task_var, width=30)
+        self.task_entry = ttk.Entry(root, textvariable=self.task_var, width=40, font=('Arial', 16))  # Increased font size
         self.task_entry.grid(row=0, column=0, padx=10, pady=10)
 
         self.add_button = ttk.Button(root, text="Add Task", command=self.add_task)
         self.add_button.grid(row=0, column=1, padx=10, pady=10)
 
-        self.task_listbox = tk.Listbox(root, height=8, width=40, borderwidth=0, selectbackground="#a6a6a6", selectforeground="black")
+        self.task_listbox = tk.Listbox(root, height=10, width=70, borderwidth=0, selectbackground="#a6a6a6", selectforeground="black", font=('Arial', 12))  # Increased font size
         self.task_listbox.grid(row=1, column=0, columnspan=2, padx=10, pady=10)
 
         self.remove_button = ttk.Button(root, text="Remove Task", command=self.remove_task)
