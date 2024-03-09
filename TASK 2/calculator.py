@@ -6,7 +6,6 @@ class CalculatorApp:
         self.root = root
         self.root.title("Simple Calculator")
         self.root.geometry("300x400")
-        self.root.configure(bg="black")  # Set the background color to black
 
         self.result_var = tk.StringVar()
 
@@ -21,20 +20,14 @@ class CalculatorApp:
             ('0', 4, 0), ('C', 4, 1), ('=', 4, 2), ('+', 4, 3)
         ]
 
-        # Add buttons to the grid with sky blue background
+        # Add buttons to the grid
         for (text, row, col) in buttons:
-            button = ttk.Button(root, text=text, command=lambda t=text: self.on_button_click(t))
-            button.grid(row=row, column=col, padx=5, pady=5, sticky="nsew")
-            button.configure(style='SkyBlue.TButton')  # Set the style for sky blue background
+            ttk.Button(root, text=text, command=lambda t=text: self.on_button_click(t)).grid(row=row, column=col, padx=5, pady=5, sticky="nsew")
 
         # Configure grid weights for resizing
         for i in range(5):
             root.grid_rowconfigure(i, weight=1)
             root.grid_columnconfigure(i, weight=1)
-
-        # Create a style for buttons with a sky blue background
-        style = ttk.Style()
-        style.configure('SkyBlue.TButton', background='skyblue')
 
     def on_button_click(self, button_text):
         current_text = self.result_var.get()
